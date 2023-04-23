@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         return res.status(402).json({
             status: 402,
             success: false,
-            message: "Fill in the blanks."
+            message: "Invalid data."
         })
     }
     if (!emailRegex.test(email)) return res.status(402).json({
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
         message: "User with this email already exists."
     })
 
-    // const username = email.split("@").at(0);
+    // const username = email.split("@")[0];
     const [username] = email.split("@");
     const hashedPass = await hashData(password);
     const hashedRepass = await hashData(repassword);

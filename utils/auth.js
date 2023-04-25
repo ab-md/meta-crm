@@ -21,4 +21,15 @@ const verifyToken = (token, secret) => {
     }
 }
 
-export { hashData, compareData, verifyToken }
+const authurize = async (data, setData) => {
+    try {
+        const req = await fetch("/api/auth/user");
+        const res = await req.json();
+        setData(data.success);
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export { hashData, compareData, verifyToken, authurize }

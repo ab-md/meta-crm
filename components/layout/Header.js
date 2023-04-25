@@ -1,9 +1,40 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
 
-    const [user, setUser] = useState(false);
+    const router = useRouter();
+    const [user, setUser] = useState();
+
+    const authurize = async () => {
+        try {
+            const req = await fetch("/api/auth/user");
+            const res = await req.json();
+            setUser(res.success);
+            console.log(user);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        authurize();
+    }, [user, setUser])
+
+    const logout = async () => {
+        try {
+            if (window.confirm("Are you sure you want to leave your account?")) {
+                const res = await fetch("/api/auth/logout");
+                const data = await res.json();
+                console.log(data);
+                router.reload();
+                router.push("/signin");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <div className="layout flex justify-between items-center py-8 px-4">
@@ -11,20 +42,22 @@ const Header = () => {
                 <Link href="/">META CRM</Link>
             </h1>
             <div>
-                <button 
-                className="mr-2 bg-red-400 px-2 rounded-full h-fit"
-                onClick={() => setUser(!user)}
-                >
-                    X
-                </button>
                 {
                     user ? (
-                        <Link
-                            className="bg-green-400 text-black px-3 py-1 rounded-md font-bold"
-                            href="/add-customer"
-                        >
-                            Add Customer
-                        </Link>
+                        <>
+                            <button
+                                onClick={logout}
+                                className="bg-red-400 text-black px-3 py-1 rounded-md font-bold mr-2"
+                            >
+                                Sign Out
+                            </button>
+                            <Link
+                                className="bg-green-400 text-black px-3 py-1 rounded-md font-bold"
+                                href="/add-customer"
+                            >
+                                Add Customer
+                            </Link>
+                        </>
                     ) : (
                         <Link
                             className="bg-green-400 text-black px-3 py-1 rounded-md font-bold"

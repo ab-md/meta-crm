@@ -1,13 +1,15 @@
 import User from "@/model/user";
 import { compareData } from "@/utils/auth";
+import connectDB from "@/utils/connectDB";
+import { emailRegex } from "@/utils/utils";
 import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
 
 export default async function handler(req, res) {
+    await connectDB();
     const { method, body } = req;
     if (method !== "POST") return;
     const { email, password } = body;
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!email || !password) return res.status(402).json({
         status: 402,
         success: false,
@@ -47,7 +49,7 @@ export default async function handler(req, res) {
         }))
         .json({
             status: 200,
-            success: false,
+            success: true,
             message: "Logged in successfully.",
             data: { email: user.email, token }
         })

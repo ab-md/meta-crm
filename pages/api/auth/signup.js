@@ -1,13 +1,13 @@
 import User from "@/model/user";
 import { hashData } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
+import { emailRegex } from "@/utils/utils";
 
 export default async function handler(req, res) {
     await connectDB();
     const { method, body } = req;
     if (method !== "POST") return;
     const { email, password, repassword } = body;
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!email || !password || !repassword) {
         return res.status(402).json({
             status: 402,

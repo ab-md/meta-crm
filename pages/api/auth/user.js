@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     })
     const secret = process.env.SECRET_KEY;
     const checkToken = verifyToken(token, secret);
-    console.log(checkToken);
+    // console.log(checkToken);
     if (!checkToken) return res.status(401).json({
         status: 401,
         success: false,

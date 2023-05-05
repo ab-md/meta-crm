@@ -1,4 +1,4 @@
-import CustomersFrom from '@/components/templates/CustomersFrom';
+import AddCustomerPage from '@/components/templates/AddCustomer';
 import useAuth from '@/hooks/useAuth';
 import React from 'react';
 
@@ -6,7 +6,7 @@ const AddCustomer = () => {
     useAuth(false);
     return (
         <>
-            <CustomersFrom />
+            <AddCustomerPage />
         </>
     );
 };

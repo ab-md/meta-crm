@@ -28,6 +28,8 @@ const SignupPage = () => {
             if (data.success) {
                 signAlert("Signed up successfully", "Sign in now!", "success");
                 router.push("/signin");
+            } else {
+                toastAlert("warning", `${data.message}`);
             }
         } catch (err) {
             console.log(err);

@@ -56,7 +56,7 @@ export default async function handler(req, res) {
             })
         }
     } else if (method === "PUT") {
-        if (!name, !last_name, !email, !phone) return res.status(422).json({
+        if (!name || !last_name || !email || !phone) return res.status(422).json({
             status: 422,
             success: false,
             message: "Invalid data."

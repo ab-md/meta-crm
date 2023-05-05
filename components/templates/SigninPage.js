@@ -1,5 +1,5 @@
 import useAuth from '@/hooks/useAuth';
-import { signAlert } from '@/utils/alerts';
+import { signAlert, toastAlert } from '@/utils/alerts';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
@@ -28,6 +28,8 @@ const SigninPage = () => {
             if (data.success) {
                 signAlert("Welcome", "Logged in successfully", "success");
                 router.push("/");
+            } else {
+                toastAlert("warning", `${data.message}`);
             }
         } catch (err) {
             console.log(err);

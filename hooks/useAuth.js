@@ -16,8 +16,14 @@ const useAuth = (login) => {
     }
     useEffect(() => {
         authurize();
-        if (login && auth === true) router.push("/");
-        if (auth === false && !login) router.push("/signin");
+        if (login && auth === true) {
+            router.reload();
+            router.push("/");
+        };
+        if (auth === false && !login) {
+            router.reload();
+            router.push("/signin");
+        }
     }, [auth, login])
 };
 

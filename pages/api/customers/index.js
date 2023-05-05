@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const { method, body } = req;
     const { name, last_name, email, phone, postal_code } = body;
     if (method === "POST") {
-        if (!name || !last_name, !email, !phone) return res.status(402).json({
+        if (!name || !last_name || !email || !phone) return res.status(402).json({
             status: 402,
             success: false,
             message: "Invalid data."
@@ -25,24 +25,24 @@ export default async function handler(req, res) {
             success: false,
             message: "Invalid email type."
         })
+        const existing = await Customer.findOne({ email });
+        if (existing) return res.status(406).json({
+            status: 406,
+            success: false,
+            message: "Customer already exists"
+        })
         try {
-            const existing = await Customer.findOne({ email });
-            if (existing) return res.status(406).json({
-                status: 406,
-                success: false,
-                message: "Customer already exists"
-            })
             const customer = await Customer.create({ name, last_name, email, phone, postal_code });
-            if (!customer) return res.status(500).json({
-                ststus: 500,
-                success: false,
-                message: "Error in connecting to database."
-            })
-            res.status(201).json({
+            if (customer) return res.status(201).json({
                 status: 201,
                 success: true,
                 message: "User created successfully.",
                 data: customer
+            })
+            res.status(500).json({
+                ststus: 500,
+                success: false,
+                message: "Error in connecting to database."
             })
         } catch (err) {
             res.status(500).json({

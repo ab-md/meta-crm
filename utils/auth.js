@@ -14,7 +14,7 @@ const compareData = async (data, hashed) => {
 const verifyToken = (token, secret) => {
     try {
         const valid = verify(token, secret);
-        console.log(valid);
+        // console.log(valid);
         return { email: valid.email }
     } catch (err) {
         return false;
@@ -26,7 +26,7 @@ const authurize = async (data, setData) => {
         const req = await fetch("/api/auth/user");
         const res = await req.json();
         setData(data.success);
-        console.log(data);
+        // console.log(data);
     } catch (err) {
         console.log(err);
     }

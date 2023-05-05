@@ -1,7 +1,6 @@
-import { signAlert, toastAlert } from '@/utils/alerts';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Input from '../modules/Input';
+import Input from './Input';
 
 const CustomersFrom = (props) => {
 

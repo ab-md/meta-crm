@@ -23,12 +23,12 @@ const Card = ({ data }) => {
     }
 
     return (
-        <div className="bg-gray-800 flex justify-between items-center p-3 rounded-md my-4">
+        <div className="bg-gray-800 flex flex-col sm:flex-row justify-between items-center p-3 rounded-md my-4">
             <div className="flex text-blue-400">
                 <p>{data.name}</p>
                 <p className="ml-8">{data.email}</p>
             </div>
-            <div>
+            <div className="mt-3">
                 <button
                     onClick={deleteCustomer}
                     className="borders border-red-500 text-red-500 hover:bg-red-500 hover:text-white"

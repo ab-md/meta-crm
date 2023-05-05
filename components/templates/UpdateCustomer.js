@@ -1,10 +1,12 @@
+import useAuth from '@/hooks/useAuth';
 import { signAlert, toastAlert } from '@/utils/alerts';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import CustomersFrom from './CustomersFrom';
+import CustomersFrom from '../modules/CustomersFrom';
 
 const UpdateCustomer = ({ data }) => {
 
+    useAuth(false);
     const router = useRouter();
     const [customer, setCustomer] = useState(data);
 

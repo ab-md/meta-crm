@@ -4,7 +4,7 @@ import Card from '../modules/Card';
 const HomePage = ({ data }) => {
 
     return (
-        <div className="h-screen">
+        <div className="min-h-screen">
             {
                 data?.map(customer => (
                     <Card key={customer._id} data={customer} />

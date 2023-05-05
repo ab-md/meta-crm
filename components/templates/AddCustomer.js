@@ -2,7 +2,7 @@ import { signAlert, toastAlert } from '@/utils/alerts';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Input from '../modules/Input';
-import CustomersFrom from './CustomersFrom';
+import CustomersFrom from '../modules/CustomersFrom';
 
 const AddCustomerPage = () => {
 

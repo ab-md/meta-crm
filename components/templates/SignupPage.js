@@ -1,5 +1,5 @@
 import useAuth from '@/hooks/useAuth';
-import { signAlert } from '@/utils/alerts';
+import { signAlert, toastAlert } from '@/utils/alerts';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';

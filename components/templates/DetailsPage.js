@@ -51,7 +51,11 @@ const DetailsPage = ({ data }) => {
                 </div>
                 <div className="py-4">
                     <span className="text-blue-400">Registration Date: </span>
-                    <span>1387/04/23</span>
+                    <span>
+                        {
+                            data.createdAt.split("T").at(0).replaceAll("-", "/")
+                        }
+                    </span>
                 </div>
             </div>
             <div className="data-bg flex justify-between items-center mt-12">

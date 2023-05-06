@@ -1,4 +1,4 @@
-import UpdateCustomer from '@/components/templates/updateCustomer';
+import UpdateCustomer from '@/components/templates/UpdateCustomer';
 import Customer from '@/model/customer';
 import connectDB from '@/utils/connectDB';
 import { isValidObjectId } from 'mongoose';

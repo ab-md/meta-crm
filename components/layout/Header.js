@@ -20,7 +20,7 @@ const Header = () => {
 
     useEffect(() => {
         authurize();
-    }, [user, setUser])
+    }, [user, setUser, authurize])
 
     const logout = async () => {
         try {

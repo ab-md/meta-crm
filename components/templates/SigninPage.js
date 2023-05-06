@@ -61,7 +61,7 @@ const SigninPage = () => {
             </button>
 
             <div className="flex mt-4">
-                <p>Don't have an account?</p>
+                <p>Don&apos;t have an account?</p>
                 <Link
                     className="ml-2 text-blue-400"
                     href="/signup">Sign Up</Link>

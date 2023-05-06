@@ -24,7 +24,7 @@ const DetailsPage = ({ data }) => {
 
     return (
         <div>
-            <p className="topic">Customer's Details</p>
+            <p className="topic">Customer&apos;s Details</p>
             <div className="data-bg grid grid-cols-1 sm:grid-cols-3">
                 <div className="py-4">
                     <span className="text-blue-400">Name: </span>
